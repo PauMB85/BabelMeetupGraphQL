@@ -1,0 +1,28 @@
+{
+  "name": "babel-meetup-graphql",
+  "version": "1.0.0",
+  "description": "just a starter pack for all of you",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel-node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juananthony/BabelMeetupGraphQL.git"
+  },
+  "author": "juananthony",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/juananthony/BabelMeetupGraphQL/issues"
+  },
+  "homepage": "https://github.com/juananthony/BabelMeetupGraphQL#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^5.0.9"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
+}
