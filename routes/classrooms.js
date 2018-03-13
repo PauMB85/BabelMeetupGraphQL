@@ -2,11 +2,11 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import classroomModel from '../models/classroom';
 
-const router = express.Router();
+const classroomRouter = express.Router();
 
 const parseUrlencoded = bodyParser.urlencoded({extended:false});
 
-router.route('/')
+classroomRouter.route('/')
 
     .get(function(request, response) {
         var query = classroomModel.find({});
@@ -16,7 +16,6 @@ router.route('/')
     })
 
     .post(parseUrlencoded, function (request, response) {
-        console.log(request.body);
         const classroomObject = new classroomModel({
             name: request.body.name,
             building: request.body.building,
@@ -34,4 +33,38 @@ router.route('/')
         });
     });
  
-module.exports = router;
+classroomRouter.route('/:classRoomId')
+    
+    .get(function(request, response) {
+        const classRoomId = request.params.classRoomId;
+        classroomModel.findById(classRoomId, function(err, classObj) {
+            if(classObj === undefined) {
+                response.status(404).send("Class not found");
+            } else {
+                response.json(classObj);
+            }
+        });
+    })
+    
+    .put(parseUrlencoded, function(request, response) {
+        const classRoomId = request.params.classRoomId;
+        classroomModel.findByIdAndUpdate(classRoomId,
+            request.body,
+            {new: true},
+            (err, classObj) => {
+                if (err) response.status(500).send(err);
+                return response.send(classObj);
+            }
+
+        );
+    })
+    
+    .delete(function(request, response) {
+        const classRoomId = request.params.classRoomId;
+        classroomModel.findByIdAndRemove(classId, function(err, classObj) {
+            if(err) response.status(500).send(err);
+            return response.send(classObj);
+        });
+    });
+
+module.exports = classroomRouter;

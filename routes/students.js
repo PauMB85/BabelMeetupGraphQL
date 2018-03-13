@@ -1,35 +1,74 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import studentModel from '../models/student';
+import classModel from '../models/class';
 
-const router = express.Router();
+const studentRouter = express.Router();
 
-const parseUrlencoded = bodyParser.urlencoded({extended:false});
+const parseUrlencoded = bodyParser.urlencoded({extended:true});
 
-router.route('/')
+studentRouter.route('/')
 
     .get(function(request, response) {
         var query = studentModel.find({});
-        query.exec((err, student) => {
-            response.json(student);
+        query.exec((err, students) => {
+            response.json(students);
         });
     })
 
-    .post(parseUrlencoded, function (request, response) {
-        console.log(request.body);
+    .post(bodyParser.json(), function (request, response) {
         const student = new studentModel({
             name: request.body.name,
             birthdate: request.body.birthdate,
-            idCard: request.body.idCard
+            idCard: request.body.idCard,
         });
-        student.save((err) => {
-            if(err) {
-                console.log(err);
+        
+        if(request.body.classes !== undefined) {
+            const query = classModel.find({"_id":{"$in":request.body.classes, "$exists": true}})
+
+            query.exec((err, classes) => {
+                if(err) response.status(500).send(err);
+                classes.map(classObj => student.classes.push(classObj));
+                student.save((err) => {
+                    if(err) response.status(500).send(err);
+                    response.status(201).send();
+                });
+            });
+        }
+    });
+
+studentRouter.route('/:studentId')
+    
+    .get(function(request, response) {
+        const studentId = request.params.studentId;
+        studentModel.findById(studentId, function(err, studentObj) {
+            if(studentObj === undefined) {
+                response.status(404).send("Class not found");
             } else {
-                console.log("Student created");
+                response.json(studentObj);
             }
-            response.status(201).send();
+        });
+    })
+    
+    .put(parseUrlencoded, function(request, response) {
+        const studentId = request.params.studentId;
+        studentModel.findByIdAndUpdate(studentId,
+            request.body,
+            {new: true},
+            (err, studentObj) => {
+                if (err) response.status(500).send(err);
+                return response.send(studentObj);
+            }
+
+        );
+    })
+    
+    .delete(function(request, response) {
+        const studentId = request.params.studentId;
+        studentModel.findByIdAndRemove(studentId, function(err, studentObj) {
+            if(err) response.status(500).send(err);
+            return response.send(studentObj);
         });
     });
- 
-module.exports = router;
+
+module.exports = studentRouter;
