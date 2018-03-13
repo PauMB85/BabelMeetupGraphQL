@@ -2,11 +2,11 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import teacherModel from '../models/teacher';
 
-const router = express.Router();
+const studentRouter = express.Router();
 
 const parseUrlencoded = bodyParser.urlencoded({extended:false});
 
-router.route('/')
+studentRouter.route('/')
 
     .get(function(request, response) {
         var query = teacherModel.find({});
@@ -15,12 +15,11 @@ router.route('/')
         });
     })
 
-    .post(parseUrlencoded, function (request, response) {
-        console.log(request.body);
+    .post(bodyParser.json(), function (request, response) {
         const teacher = new teacherModel({
             name: request.body.name,
             birthdate: request.body.birthdate,
-            idCard: request.body.idCard
+            salary: request.body.salary
         });
         teacher.save((err) => {
             if(err) {
@@ -32,4 +31,37 @@ router.route('/')
         });
     });
  
-module.exports = router;
+studentRouter.route('/:teacherId')
+    
+    .get(function(request, response) {
+        const teacherId = request.params.teacherId;
+        teacherModel.findById(teacherId, function(err, teacherObj) {
+            if(teacherObj === undefined) {
+                response.status(404).send("Class not found");
+            } else {
+                response.json(teacherObj);
+            }
+        });
+    })
+    
+    .put(bodyParser.json(), function(request, response) {
+        const teacherId = request.params.teacherId;
+        teacherModel.findByIdAndUpdate(teacherId,
+            request.body,
+            {new: true},
+            (err, teacherObj) => {
+                if (err) response.status(500).send(err);
+                return response.send(teacherObj);
+            }
+        );
+    })
+    
+    .delete(function(request, response) {
+        const teacherId = request.params.teacherId;
+        teacherModel.findByIdAndRemove(teacherId, function(err, teacherObj) {
+            if(err) response.status(500).send(err);
+            return response.send(teacherObj);
+        });
+    });
+
+module.exports = studentRouter;
