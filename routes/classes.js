@@ -16,7 +16,6 @@ classRouter.route('/')
     })
 
     .post(parseUrlencoded, function (request, response) {
-        console.log(request.body);
         const classObject = new classModel({
             name: request.body.name,
             subject: request.body.subject,
@@ -33,7 +32,7 @@ classRouter.route('/')
             response.status(201).send();
         });
     });
-    
+
 classRouter.route('/:classId')
     
     .get(function(request, response) {
@@ -47,9 +46,8 @@ classRouter.route('/:classId')
         });
     })
     
-    .put(function(request, response) {
+    .put(parseUrlencoded, function(request, response) {
         const classId = request.params.classId;
-        console.log(request.body);
         classModel.findByIdAndUpdate(classId,
             request.body,
             {new: true},
@@ -59,6 +57,14 @@ classRouter.route('/:classId')
             }
 
         );
+    })
+    
+    .delete(function(request, response) {
+        const classId = request.params.classId;
+        classModel.findByIdAndRemove(classId, function(err, classObj) {
+            if(err) response.status(500).send(err);
+            return response.send(classObj);
+        });
     });
  
 module.exports = classRouter;
