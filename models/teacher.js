@@ -2,9 +2,8 @@ import mongoose from '../db.js';
 
 const TeacherSchema = mongoose.Schema({
     name: String,
-    idCard: String,
     birthdate: Date,
-    classes: [{type: mongoose.Schema.Types.ObjectId, ref: 'Class'}]
+    salary: Number
 });
 
 module.exports = mongoose.model('Teacher', TeacherSchema);
