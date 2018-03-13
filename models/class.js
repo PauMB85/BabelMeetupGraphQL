@@ -6,7 +6,6 @@ const ClassSchema = mongoose.Schema({
     lection: String,
     date: Date,
     teacher: {type: mongoose.Schema.Types.ObjectId, ref: 'Teacher'},
-    students: [{type: mongoose.Schema.Types.ObjectId, ref: 'Student'}],
     classroom: {type: mongoose.Schema.Types.ObjectId, ref: 'Classroom'}
 });
 
