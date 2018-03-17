@@ -2,11 +2,11 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import teacherModel from '../models/teacher';
 
-const studentRouter = express.Router();
+const teachersRouter = express.Router();
 
 const parseUrlencoded = bodyParser.urlencoded({extended:false});
 
-studentRouter.route('/')
+teachersRouter.route('/')
 
     .get(function(request, response) {
         var query = teacherModel.find({});
@@ -31,7 +31,7 @@ studentRouter.route('/')
         });
     });
  
-studentRouter.route('/:teacherId')
+teachersRouter.route('/:teacherId')
     
     .get(function(request, response) {
         const teacherId = request.params.teacherId;
@@ -64,4 +64,4 @@ studentRouter.route('/:teacherId')
         });
     });
 
-module.exports = studentRouter;
+module.exports = teachersRouter;
