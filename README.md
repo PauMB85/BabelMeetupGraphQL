@@ -23,50 +23,12 @@ npm run build
 
 ## Endpoints
 
-### Students
+List of available endpoints:
 
-List of available endpoints for student resource:
-
-| Method | Endpoint               |
-| ------ | ---------------------- |
-| GET    | /students              |
-| POST   | /students              |
-| GET    | /students/*:studentId* |
-| PUT    | /students/*:studentId* |
-| DELETE | /students/*:studentId* |
-
-### Classes
-
-List of available endpoints for class resource:
-
-| Method | Endpoint            |
-| ------ | ------------------- |
-| GET    | /classes            |
-| POST   | /classes            |
-| GET    | /classes/*:classId* |
-| PUT    | /classes/*:classId* |
-| DELETE | /classes/*:classId* |
-
-### Teachers
-
-List of available endpoints for teacher resource:
-
-| Method | Endpoint               |
-| ------ | ---------------------- |
-| GET    | /teachers              |
-| POST   | /teachers              |
-| GET    | /teachers/*:teacherId* |
-| PUT    | /teachers/*:teacherId* |
-| DELETE | /teachers/*:teacherId* |
-
-### Classrooms
-
-List of available endpoints for classroom resource:
-
-| Method | Endpoint                   |
-| ------ | -------------------------- |
-| GET    | /classrooms                |
-| POST   | /classrooms                |
-| GET    | /classrooms/*:classRoomId* |
-| PUT    | /classrooms/*:classRoomId* |
-| DELETE | /classrooms/*:classRoomId* |
+| Method | Students               | Clases | Teachers | Classrooms |
+| ------ | ---------------------- | --- | --- | --- | 
+| GET    | /students              | /classes | /teachers | /classrooms |
+| POST   | /students              | /classes | /teachers | /classrooms |
+| GET    | /students/*:studentId* | /classes/*:classId* | /teachers/*:teacherId* | /classrooms/*:classRoomId* |
+| PUT    | /students/*:studentId* | /classes/*:classId* | /teachers/*:teacherId* | /classrooms/*:classRoomId* |
+| DELETE | /students/*:studentId* | /classes/*:classId* | /teachers/*:teacherId* | /classrooms/*:classRoomId* |
