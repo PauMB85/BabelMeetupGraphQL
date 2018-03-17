@@ -1,23 +1,564 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<style type="text/css">
-			/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css *//** * 1. Change the default font family in all browsers (opinionated). * 2. Prevent adjustments of font size after orientation changes in IE and iOS. */html {  font-family: sans-serif;  /* 1 */  -ms-text-size-adjust: 100%;  /* 2 */  -webkit-text-size-adjust: 100%;  /* 2 */ }/** * Remove the margin in all browsers (opinionated). */body {  margin: 0; }/* Links   ========================================================================== *//** * 1. Remove the gray background on active links in IE 10. * 2. Remove gaps in links underline in iOS 8+ and Safari 8+. */a {  background-color: transparent;  /* 1 */  -webkit-text-decoration-skip: objects;  /* 2 */ }/** * Remove the outline on focused links when they are also active or hovered * in all browsers (opinionated). */a:active,a:hover {  outline-width: 0; }/** * Prevent the duplicate application of `bolder` by the next rule in Safari 6. */b,strong {  font-weight: inherit; }/** * Add the correct font weight in Chrome, Edge, and Safari. */b,strong {  font-weight: bolder; }/** * Correct the font size and margin on `h1` elements within `section` and * `article` contexts in Chrome, Firefox, and Safari. */h1 {  font-size: 2em;  margin: 0.67em 0; }/* Embedded content   ========================================================================== *//** * Remove the border on images inside links in IE 10-. */img {  border-style: none; }/** * Hide the overflow in IE. */svg:not(:root) {  overflow: hidden; }/* Grouping content   ========================================================================== *//** * 1. Correct the inheritance and scaling of font size in all browsers. * 2. Correct the odd `em` font sizing in all browsers. */code,kbd,pre,samp {  font-family: monospace, monospace;  /* 1 */  font-size: 1em;  /* 2 */ }/** * 1. Add the correct box sizing in Firefox. * 2. Show the overflow in Edge and IE. */hr {  box-sizing: content-box;  /* 1 */  height: 0;  /* 1 */  overflow: visible;  /* 2 */ }body {  background-color: white;  font-family: sans-serif;  margin: 0;  padding: 3em 10vw 4em 4em;  min-height: 90vh;  max-width: 100em;  font-style: normal;  font-weight: normal;  font-size: 12pt; }h1 {  font-weight: normal;  font-size: 3em;  margin: 0em; }h2 {  font-weight: 600;  font-size: 1.3em;  font-style: italic;  margin-top: 0.2em;  position: relative;  top: -0.3em; }h3 {  font-size: 1.3em;  margin-top: 2em;  margin-bottom: 1em; }h4 {  font-size: 1.2em;  margin-bottom: 0.6em; }h5 {  font-size: 0.9em;  margin-bottom: 0.5em; }p {  margin: 0em;  margin-bottom: 1em;  line-height: 1.3em;  white-space: pre-wrap; }h1 + p {  margin-top: 1em; }a {  transition: color, 0.1s; }table {  padding-bottom: 1em; }  table td {    padding-bottom: 0.5em;    vertical-align: top; }    table td:first-child {      font-style: italic;      padding-right: 1.5em; }    table td:nth-child(2) {      max-width: 60vw; }ul, ol {  margin: 0em;  margin-top: 0.3em;  margin-bottom: 1.2em;  padding: 0em;  list-style-position: inside; }  ul li, ol li {    margin-bottom: 0.5em; }ul ul {  margin-left: 2em;  margin-bottom: 0em; }ol ol {  margin-left: 2em;  margin-bottom: 0em; }hr {  border: none;  border-top: 1px solid #323232;  margin: 1em 0 1em 0; }span.tab {  white-space: pre; }@media (max-width: 400pt) {  body {    padding-left: 10vw;    padding-top: 2.5em; }  h1 {    font-size: 2.5em;    line-height: 0.9em; }  h2 {    font-size: 1.3em; } }@media print {  body {    min-height: 0; } }html {  background-color: #212121;  -webkit-print-color-adjust: exact; }body {  background: none;  color: white;  font-family: 'Gill Sans', sans-serif; }h1, h2, h3, h4, h5, h6 {  font-weight: normal; }h1 {  display: inline-block; }h2 {  color: #686868;  display: inline-block;  margin-left: 1em; }h3 {  color: #ADADAD; }h4 {  color: #ADADAD; }h5 {  color: #808080; }a {  color: #999898; }  a:visited {    color: #4c4c4c; }  a:hover {    color: #e5e5e5; }hr {  margin-right: 40vw;  border-top: 1px solid #e7e7e7; }@media (max-width: 400pt) {  h1, h2 {    display: block;    text-align: center;    margin-left: 0; } }
-		</style>
-	</head>
+
+<head>
+	<title>Empower your API with GraphQL</title>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>
+	<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [['$','$'], ['\\(','\\)']]}});</script>
+	<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS": {"availableFonts":["TeX"],"scale": 150}});</script>
+
+	<style>
+		/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+		body {
+			font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+			font-size: 14px;
+			padding: 0 12px;
+			line-height: 22px;
+			word-wrap: break-word;
+		}
+
+		#code-csp-warning {
+			position: fixed;
+			top: 0;
+			right: 0;
+			color: white;
+			margin: 16px;
+			text-align: center;
+			font-size: 12px;
+			font-family: sans-serif;
+			background-color: #444444;
+			cursor: pointer;
+			padding: 6px;
+			box-shadow: 1px 1px 1px rgba(0, 0, 0, .25);
+		}
+
+		#code-csp-warning:hover {
+			text-decoration: none;
+			background-color: #007acc;
+			box-shadow: 2px 2px 2px rgba(0, 0, 0, .25);
+		}
+
+
+		body.scrollBeyondLastLine {
+			margin-bottom: calc(100vh - 22px);
+		}
+
+		body.showEditorSelection .code-line {
+			position: relative;
+		}
+
+		body.showEditorSelection .code-active-line:before,
+		body.showEditorSelection .code-line:hover:before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: -12px;
+			height: 100%;
+		}
+
+		body.showEditorSelection li.code-active-line:before,
+		body.showEditorSelection li.code-line:hover:before {
+			left: -30px;
+		}
+
+		.vscode-light.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(0, 0, 0, 0.15);
+		}
+
+		.vscode-light.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(0, 0, 0, 0.40);
+		}
+
+		.vscode-dark.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(255, 255, 255, 0.4);
+		}
+
+		.vscode-dark.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(255, 255, 255, 0.60);
+		}
+
+		.vscode-high-contrast.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(255, 160, 0, 0.7);
+		}
+
+		.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(255, 160, 0, 1);
+		}
+
+		img {
+			max-width: 100%;
+			max-height: 100%;
+		}
+
+		a {
+			color: #4080D0;
+			text-decoration: none;
+		}
+
+		a:focus,
+		input:focus,
+		select:focus,
+		textarea:focus {
+			outline: 1px solid -webkit-focus-ring-color;
+			outline-offset: -1px;
+		}
+
+		hr {
+			border: 0;
+			height: 2px;
+			border-bottom: 2px solid;
+		}
+
+		h1 {
+			padding-bottom: 0.3em;
+			line-height: 1.2;
+			border-bottom-width: 1px;
+			border-bottom-style: solid;
+		}
+
+		h1,
+		h2,
+		h3 {
+			font-weight: normal;
+		}
+
+		h1 code,
+		h2 code,
+		h3 code,
+		h4 code,
+		h5 code,
+		h6 code {
+			font-size: inherit;
+			line-height: auto;
+		}
+
+		a:hover {
+			color: #4080D0;
+			text-decoration: underline;
+		}
+
+		table {
+			border-collapse: collapse;
+		}
+
+		table>thead>tr>th {
+			text-align: left;
+			border-bottom: 1px solid;
+		}
+
+		table>thead>tr>th,
+		table>thead>tr>td,
+		table>tbody>tr>th,
+		table>tbody>tr>td {
+			padding: 5px 10px;
+		}
+
+		table>tbody>tr+tr>td {
+			border-top: 1px solid;
+		}
+
+		blockquote {
+			margin: 0 7px 0 5px;
+			padding: 0 16px 0 10px;
+			border-left: 5px solid;
+		}
+
+		code {
+			font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+			font-size: 14px;
+			line-height: 19px;
+		}
+
+		body.wordWrap pre {
+			white-space: pre-wrap;
+		}
+
+		.mac code {
+			font-size: 12px;
+			line-height: 18px;
+		}
+
+		pre:not(.hljs),
+		pre.hljs code>div {
+			padding: 16px;
+			border-radius: 3px;
+			overflow: auto;
+		}
+
+		/** Theming */
+
+		.vscode-light,
+		.vscode-light pre code {
+			color: rgb(30, 30, 30);
+		}
+
+		.vscode-dark,
+		.vscode-dark pre code {
+			color: #DDD;
+		}
+
+		.vscode-high-contrast,
+		.vscode-high-contrast pre code {
+			color: white;
+		}
+
+		.vscode-light code {
+			color: #A31515;
+		}
+
+		.vscode-dark code {
+			color: #D7BA7D;
+		}
+
+		.vscode-light pre:not(.hljs),
+		.vscode-light code>div {
+			background-color: rgba(220, 220, 220, 0.4);
+		}
+
+		.vscode-dark pre:not(.hljs),
+		.vscode-dark code>div {
+			background-color: rgba(10, 10, 10, 0.4);
+		}
+
+		.vscode-high-contrast pre:not(.hljs),
+		.vscode-high-contrast code>div {
+			background-color: rgb(0, 0, 0);
+		}
+
+		.vscode-high-contrast h1 {
+			border-color: rgb(0, 0, 0);
+		}
+
+		.vscode-light table>thead>tr>th {
+			border-color: rgba(0, 0, 0, 0.69);
+		}
+
+		.vscode-dark table>thead>tr>th {
+			border-color: rgba(255, 255, 255, 0.69);
+		}
+
+		.vscode-light h1,
+		.vscode-light hr,
+		.vscode-light table>tbody>tr+tr>td {
+			border-color: rgba(0, 0, 0, 0.18);
+		}
+
+		.vscode-dark h1,
+		.vscode-dark hr,
+		.vscode-dark table>tbody>tr+tr>td {
+			border-color: rgba(255, 255, 255, 0.18);
+		}
+
+		.vscode-light blockquote,
+		.vscode-dark blockquote {
+			background: rgba(127, 127, 127, 0.1);
+			border-color: rgba(0, 122, 204, 0.5);
+		}
+
+		.vscode-high-contrast blockquote {
+			background: transparent;
+			border-color: #fff;
+		}
+	</style>
+
+	<style>
+		/* Tomorrow Theme */
+
+		/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+
+		/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+		/* Tomorrow Comment */
+
+		.hljs-comment,
+		.hljs-quote {
+			color: #8e908c;
+		}
+
+		/* Tomorrow Red */
+
+		.hljs-variable,
+		.hljs-template-variable,
+		.hljs-tag,
+		.hljs-name,
+		.hljs-selector-id,
+		.hljs-selector-class,
+		.hljs-regexp,
+		.hljs-deletion {
+			color: #c82829;
+		}
+
+		/* Tomorrow Orange */
+
+		.hljs-number,
+		.hljs-built_in,
+		.hljs-builtin-name,
+		.hljs-literal,
+		.hljs-type,
+		.hljs-params,
+		.hljs-meta,
+		.hljs-link {
+			color: #f5871f;
+		}
+
+		/* Tomorrow Yellow */
+
+		.hljs-attribute {
+			color: #eab700;
+		}
+
+		/* Tomorrow Green */
+
+		.hljs-string,
+		.hljs-symbol,
+		.hljs-bullet,
+		.hljs-addition {
+			color: #718c00;
+		}
+
+		/* Tomorrow Blue */
+
+		.hljs-title,
+		.hljs-section {
+			color: #4271ae;
+		}
+
+		/* Tomorrow Purple */
+
+		.hljs-keyword,
+		.hljs-selector-tag {
+			color: #8959a8;
+		}
+
+		.hljs {
+			display: block;
+			overflow-x: auto;
+			color: #4d4d4c;
+			padding: 0.5em;
+		}
+
+		.hljs-emphasis {
+			font-style: italic;
+		}
+
+		.hljs-strong {
+			font-weight: bold;
+		}
+	</style>
+
+	<style>
+		/*
+ * Markdown PDF CSS
+ */
+
+		pre {
+			background-color: #f8f8f8;
+			border: 1px solid #cccccc;
+			border-radius: 3px;
+			overflow-x: auto;
+			white-space: pre-wrap;
+			overflow-wrap: break-word;
+		}
+
+		pre:not(.hljs) {
+			padding: 23px;
+			line-height: 19px;
+		}
+
+		blockquote {
+			background: rgba(127, 127, 127, 0.1);
+			border-color: rgba(0, 122, 204, 0.5);
+		}
+
+		.emoji {
+			height: 1.4em;
+		}
+
+		/* for inline code */
+
+		:not(pre):not(.hljs)>code {
+			color: #C9AE75;
+			/* Change the old color so it seems less like an error */
+			font-size: inherit;
+		}
+	</style>
+
+</head>
+
 <body>
-	
-<h1>Empower your API with GraphQL</h1>
-<p>This repository is a starter pack for the Meetup called 'Empower your API with GraphQL'. </p>
-<h4>Installation</h4>
-<p>First, you'd need to restore the MongoDB dump into your MongoDB instance:</p>
-<p><em>``</em><br>mongorestore &mdash;-db babelMeetupGraphQL &mdash;-verbose .&frasl;dump&frasl;babelMeetupGraphQL<br><em>``</em></p>
-<p>Then, you need to install all npm dependencies:<br><em>``</em><br>npm install<br><em>``</em><br></p>
-<h4>How to run babelMeetupGraphQL</h4>
-<p>To run the server:<br><em>``</em><br>npm run build<br><em>``</em></p>
+	<h1 id="empower-your-api-with-graphql">Empower your API with GraphQL</h1>
+	<p>This repository is a starter pack for the Meetup called 'Empower your API with GraphQL'.</p>
+	<h2 id="installation">Installation</h2>
+	<p>First, you'd need to restore the MongoDB dump into your MongoDB instance:</p>
+	<pre class="hljs"><code><div>mongorestore —-db babelMeetupGraphQL —-verbose ./dump/babelMeetupGraphQL
+</div></code></pre>
+	<p>Then, you need to install all npm dependencies:</p>
+	<pre class="hljs"><code><div>npm install
+</div></code></pre>
+	<h2 id="how-to-run-babelmeetupgraphql">How to run babelMeetupGraphQL</h2>
+	<p>To run the server:</p>
+	<pre class="hljs"><code><div>npm run build
+</div></code></pre>
+	<h2 id="endpoints">Endpoints</h2>
+	<h3 id="students">Students</h3>
+	<p>List of available endpoints for student resource:</p>
+	<table>
+		<thead>
+			<tr>
+				<th>Method</th>
+				<th>Endpoint</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>GET</td>
+				<td>/students</td>
+			</tr>
+			<tr>
+				<td>POST</td>
+				<td>/students</td>
+			</tr>
+			<tr>
+				<td>GET</td>
+				<td>/students/
+					<em>:studentId</em>
+				</td>
+			</tr>
+			<tr>
+				<td>PUT</td>
+				<td>/students/
+					<em>:studentId</em>
+				</td>
+			</tr>
+			<tr>
+				<td>DELETE</td>
+				<td>/students/
+					<em>:studentId</em>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<h3 id="classes">Classes</h3>
+	<p>List of available endpoints for class resource:</p>
+	<table>
+		<thead>
+			<tr>
+				<th>Method</th>
+				<th>Endpoint</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>GET</td>
+				<td>/classes</td>
+			</tr>
+			<tr>
+				<td>POST</td>
+				<td>/classes</td>
+			</tr>
+			<tr>
+				<td>GET</td>
+				<td>/classes/
+					<em>:classId</em>
+				</td>
+			</tr>
+			<tr>
+				<td>PUT</td>
+				<td>/classes/
+					<em>:classId</em>
+				</td>
+			</tr>
+			<tr>
+				<td>DELETE</td>
+				<td>/classes/
+					<em>:classId</em>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<h3 id="teachers">Teachers</h3>
+	<p>List of available endpoints for teacher resource:</p>
+	<table>
+		<thead>
+			<tr>
+				<th>Method</th>
+				<th>Endpoint</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>GET</td>
+				<td>/teachers</td>
+			</tr>
+			<tr>
+				<td>POST</td>
+				<td>/teachers</td>
+			</tr>
+			<tr>
+				<td>GET</td>
+				<td>/teachers/
+					<em>:teacherId</em>
+				</td>
+			</tr>
+			<tr>
+				<td>PUT</td>
+				<td>/teachers/
+					<em>:teacherId</em>
+				</td>
+			</tr>
+			<tr>
+				<td>DELETE</td>
+				<td>/teachers/
+					<em>:teacherId</em>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<h3 id="classrooms">Classrooms</h3>
+	<p>List of available endpoints for classroom resource:</p>
+	<table>
+		<thead>
+			<tr>
+				<th>Method</th>
+				<th>Endpoint</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>GET</td>
+				<td>/classrooms</td>
+			</tr>
+			<tr>
+				<td>POST</td>
+				<td>/classrooms</td>
+			</tr>
+			<tr>
+				<td>GET</td>
+				<td>/classrooms/
+					<em>:classRoomId</em>
+				</td>
+			</tr>
+			<tr>
+				<td>PUT</td>
+				<td>/classrooms/
+					<em>:classRoomId</em>
+				</td>
+			</tr>
+			<tr>
+				<td>DELETE</td>
+				<td>/classrooms/
+					<em>:classRoomId</em>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 
 </body>
+
 </html>
-<!-- Authored with Tabula -->
