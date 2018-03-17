@@ -18,3 +18,6 @@ server.use('/students', students);
 server.use('/teachers', teachers);
 server.use('/classes', classes);
 server.use('/classrooms', classrooms);
+
+
+server.use(express.static('public'));
