@@ -1,0 +1,448 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Babel Meetup GraphQL",
+		"_postman_id": "4864bb48-fcb0-627c-227c-e7b68da15383",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET /classrooms",
+			"request": {
+				"url": "http://localhost:4000/classrooms",
+				"method": "GET",
+				"header": [
+					{
+						"key": "name",
+						"value": "pepe",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "pepe",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST /classrooms",
+			"request": {
+				"url": "http://localhost:4000/classrooms",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Aula Valencia",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "building",
+							"value": "Edificio Marie Curie",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "floor",
+							"value": "3",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "capacity",
+							"value": "200",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET /classrooms/:classroomId",
+			"request": {
+				"url": "localhost:4000/classrooms/5aa3c7a9488c1a8991693d25",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /classrooms/:classroomId",
+			"request": {
+				"url": "localhost:4000/classrooms/5aa3c7a9488c1a8991693d25",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Aula Córdoba",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "building",
+							"value": "Edificio Severo Ochoa",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "floor",
+							"value": "1",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /classrooms/:classroomId",
+			"request": {
+				"url": "localhost:4000/classrooms/5aa24406bf4fa2824a2a0f07",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET /classes",
+			"request": {
+				"url": "localhost:4000/classes",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST /classes",
+			"request": {
+				"url": "localhost:4000/classes",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Akkusative und Dativ",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "subject",
+							"value": "Deutsch",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "lektion",
+							"value": "3 - Akkusative und Dativ",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "classroom",
+							"value": "ObjectId(\"5aa236c0bf4fa2824a2a0f04\"",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2018-04-12",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET /classes/:classId",
+			"request": {
+				"url": "localhost:4000/classes/5aa24406bf4fa2824a2a0f07",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /classes/:classId",
+			"request": {
+				"url": "localhost:4000/classes/5aa24406bf4fa2824a2a0f07",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Akkusative und Dativ",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /classes/:classId",
+			"request": {
+				"url": "localhost:4000/classes/5aa3ac00bf4fa2824a2a0f09",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET /students",
+			"request": {
+				"url": "localhost:4000/classes",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST /students",
+			"request": {
+				"url": "localhost:4000/students",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"name\": \"Rick Sánchez\",\n\"idCard\": \"000099Z\",\n\"birthdate\": \"1910-06-21\",\n\"classes\": [\"5aa2445bbf4fa2824a2a0f08\"]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET /students/:studentId",
+			"request": {
+				"url": "localhost:4000/classes/5aa24406bf4fa2824a2a0f07",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /students/:studentId",
+			"request": {
+				"url": "localhost:4000/students/5aa1c8df1e0d667bdad91523",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Pepito",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /students/:studentId",
+			"request": {
+				"url": "localhost:4000/students/5aa1c8df1e0d667bdad91523",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Pepito",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET /teachers",
+			"request": {
+				"url": "localhost:4000/teachers",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST /teachers",
+			"request": {
+				"url": "localhost:4000/teachers",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Profesor Hubert Farnsworth\",\n\t\"salary\": 100000,\n\t\"birthdate\": \"2851-04-09\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET /teachers/:teachersId",
+			"request": {
+				"url": "localhost:4000/teachers/5aa85beb217eecada45440c8",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Rick Sánchez\",\n\t\"salary\": 70000,\n\t\"birthdate\": \"2022-05-13\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /teachers/:teachersId",
+			"request": {
+				"url": "localhost:4000/teachers/5aa85beb217eecada45440c8",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Rick Sánchez\",\n\t\"salary\": 70000,\n\t\"birthdate\": \"2022-05-13\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /teachers/:teachersId",
+			"request": {
+				"url": "localhost:4000/teachers/5aa85beb217eecada45440c8",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Rick Sánchez\",\n\t\"salary\": 70000,\n\t\"birthdate\": \"2022-05-13\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
