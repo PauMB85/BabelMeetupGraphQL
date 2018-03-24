@@ -16,11 +16,12 @@ npm install
 
 
 ## How to run babelMeetupGraphQL
-To run the server:
+First, ensure your ```mongod``` instance is up and running. Then, we need to build our Express app using Babeljs:
 ```
 npm run build
 ```
 
+That's it, now we can check our app is running trying to access to : http://localhost:4000
 ## Endpoints
 
 List of available endpoints:
