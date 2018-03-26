@@ -6,7 +6,7 @@ This repository is a starter pack for the Meetup called 'Empower your API with G
 First, you'd need to restore the MongoDB dump into your MongoDB instance:
 
 ```
-mongorestore —-db babelMeetupGraphQL —-verbose ./dump/babelMeetupGraphQL
+mongorestore —-db babelMeetupGraphQL dump/babelMeetupGraphQL/
 ```
 
 Then, you need to install all npm dependencies:
