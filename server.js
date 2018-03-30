@@ -5,6 +5,7 @@ import students from './routes/students';
 import teachers from './routes/teachers';
 import classes from './routes/classes';
 import classrooms from './routes/classrooms';
+import {graphqlExpress, graphiqlExpress} from 'apollo-server-express';
 
 const server = express();
 
