@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import studentModel from '../models/student';
-import classModel from '../models/class';
+import classModel from '../models/lecture';
 
 const studentRouter = express.Router();
 
