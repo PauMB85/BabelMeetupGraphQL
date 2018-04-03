@@ -11,4 +11,4 @@ const ClassSchema = mongoose.Schema({
     classroom: {type: mongoose.Schema.Types.ObjectId, ref: 'Classroom'}
 });
 
-module.exports = mongoose.model('Class', ClassSchema);
+module.exports = mongoose.model('Lecture', ClassSchema);

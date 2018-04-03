@@ -43,7 +43,7 @@ studentRouter.route('/:studentId')
         const studentId = request.params.studentId;
         studentModel.findById(studentId, function(err, studentObj) {
             if(studentObj === undefined) {
-                response.status(404).send("Class not found");
+                response.status(404).send("Student not found");
             } else {
                 response.json(studentObj);
             }
