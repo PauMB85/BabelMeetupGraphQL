@@ -36,7 +36,7 @@ Eso es todo, ahora comprueba que tienes la app corriendo accediendo a: http://lo
 
 Lista de endpoints disponibles:
 
-| Método HTTP | Students               | Clases | Teachers | Classrooms |
+| Método HTTP | Students               | Lectures | Teachers | Classrooms |
 | ------ | ---------------------- | --- | --- | --- | 
 | GET    | /students              | /lectures | /teachers | /classrooms |
 | POST   | /students              | /lectures | /teachers | /classrooms |
