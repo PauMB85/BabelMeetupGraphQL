@@ -1,22 +1,31 @@
 # Empower your API with GraphQL
-This repository is a starter pack for the Meetup called 'Empower your API with GraphQL'. 
+Este repositorio es un pack de inicio para el Meetup de Babel llamado 'Empower your API with GraphQL'.
 
-## Installation
+## ¿Qué necesitas?
 
-First, you'd need to restore the MongoDB dump into your MongoDB instance:
+Asegurate que tienes instalado en tu máquina lo siguiente:
+* Conexión a internet (Vale no se instala, pero asegúrate de tener)
+* Node.js (6.11.0)
+* NPM 3.10.10
+* Un editor de código decente (VS Code, Atom, Sublime, vim, ...)
+* MongoDB 2.6.7
+
+## Instalación
+
+Primero, necesitas restaurar el dump de MongoDB que he dejado en la carpeta ```./dump/``` en tu instancia de mongod:store the MongoDB dump into your MongoDB instance:
 
 ```
 mongorestore —-db babelMeetupGraphQL dump/babelMeetupGraphQL/
 ```
 
-Then, you need to install all npm dependencies:
+Y luego vamos a necesitar instalar las dependencias, etc:
 ```
 npm install
 ```
 
 
-## How to run babelMeetupGraphQL
-First, ensure your ```mongod``` instance is up and running. Then, we need to build our Express app using Babeljs:
+## Cómo arrancar babelMeetupGraphQL
+Asegúrate que tienes tu instancia de ```mongod``` levantada y corriendo. Después, vas a necesitar hacer un build de nuestra app de Express usando Babeljs:
 ```
 npm run build
 ```
@@ -24,9 +33,9 @@ npm run build
 That's it, now we can check our app is running trying to access to : http://localhost:4000
 ## Endpoints
 
-List of available endpoints:
+Lista de endpoints disponibles:
 
-| Method | Students               | Clases | Teachers | Classrooms |
+| Método HTTP | Students               | Clases | Teachers | Classrooms |
 | ------ | ---------------------- | --- | --- | --- | 
 | GET    | /students              | /classes | /teachers | /classrooms |
 | POST   | /students              | /classes | /teachers | /classrooms |
