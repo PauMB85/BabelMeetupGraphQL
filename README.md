@@ -12,7 +12,7 @@ Asegurate que tienes instalado en tu máquina lo siguiente:
 
 ## Instalación
 
-Primero, necesitas restaurar el dump de MongoDB que he dejado en la carpeta ```./dump/``` en tu instancia de mongod:store the MongoDB dump into your MongoDB instance:
+Primero, necesitas restaurar el dump de MongoDB que he dejado en la carpeta ```./dump/``` en tu instancia de mongod:
 
 ```
 mongorestore —-db babelMeetupGraphQL dump/babelMeetupGraphQL/
