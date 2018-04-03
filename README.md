@@ -30,7 +30,8 @@ Aseg√∫rate que tienes tu instancia de ```mongod``` levantada y corriendo. Despu√
 npm run build
 ```
 
-That's it, now we can check our app is running trying to access to : http://localhost:4000
+Eso es todo, ahora comprueba que tienes la app corriendo accediendo a: http://localhost:4000
+
 ## Endpoints
 
 Lista de endpoints disponibles:
