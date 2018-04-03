@@ -12,7 +12,7 @@ Asegurate que tienes instalado en tu máquina lo siguiente:
 
 ## Instalación
 
-Primero, necesitas restaurar el dump de MongoDB que he dejado en la carpeta ```./dump/``` en tu instancia de mongod:store the MongoDB dump into your MongoDB instance:
+Primero, necesitas restaurar el dump de MongoDB que he dejado en la carpeta ```./dump/``` en tu instancia de mongod:
 
 ```
 mongorestore —-db babelMeetupGraphQL dump/babelMeetupGraphQL/
@@ -30,7 +30,8 @@ Asegúrate que tienes tu instancia de ```mongod``` levantada y corriendo. Despu�
 npm run build
 ```
 
-That's it, now we can check our app is running trying to access to : http://localhost:4000
+Eso es todo, ahora comprueba que tienes la app corriendo accediendo a: http://localhost:4000
+
 ## Endpoints
 
 Lista de endpoints disponibles:
