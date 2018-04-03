@@ -7,6 +7,7 @@ import classes from './routes/classes';
 import classrooms from './routes/classrooms';
 import {graphqlExpress, graphiqlExpress} from 'apollo-server-express';
 import bodyParser from 'body-parser';
+import schema from './schema.js';
 
 const server = express();
 
@@ -25,6 +26,6 @@ server.use('/classrooms', classrooms);
 server.use('/graphiql', graphiqlExpress({
     endpointURL: '/graphql'
 }));
-server.use('/graphql', bodyParser.json(), graphqlExpress({}));
+server.use('/graphql', bodyParser.json(), graphqlExpress({schema}));
 
 server.use(express.static('public'));
