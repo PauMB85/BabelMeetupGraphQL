@@ -36,10 +36,10 @@ Eso es todo, ahora comprueba que tienes la app corriendo accediendo a: http://lo
 
 Lista de endpoints disponibles:
 
-| Método HTTP | Students               | Clases | Teachers | Classrooms |
+| Método HTTP | Students               | Lectures | Teachers | Classrooms |
 | ------ | ---------------------- | --- | --- | --- | 
-| GET    | /students              | /classes | /teachers | /classrooms |
-| POST   | /students              | /classes | /teachers | /classrooms |
-| GET    | /students/*:studentId* | /classes/*:classId* | /teachers/*:teacherId* | /classrooms/*:classRoomId* |
-| PUT    | /students/*:studentId* | /classes/*:classId* | /teachers/*:teacherId* | /classrooms/*:classRoomId* |
-| DELETE | /students/*:studentId* | /classes/*:classId* | /teachers/*:teacherId* | /classrooms/*:classRoomId* |
+| GET    | /students              | /lectures | /teachers | /classrooms |
+| POST   | /students              | /lectures | /teachers | /classrooms |
+| GET    | /students/*:studentId* | /lectures/*:classId* | /teachers/*:teacherId* | /classrooms/*:classRoomId* |
+| PUT    | /students/*:studentId* | /lectures/*:classId* | /teachers/*:teacherId* | /classrooms/*:classRoomId* |
+| DELETE | /students/*:studentId* | /lectures/*:classId* | /teachers/*:teacherId* | /classrooms/*:classRoomId* |

@@ -1,29 +1,29 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import classModel from '../models/class';
+import lectureModel from '../models/lecture';
 
-const classRouter = express.Router();
+const lectureRouter = express.Router();
 
 const parseUrlencoded = bodyParser.urlencoded({extended:false});
 
-classRouter.route('/')
+lectureRouter.route('/')
 
     .get(function(request, response) {
-        var query = classModel.find({});
+        var query = lectureModel.find({});
         query.exec((err, classArray) => {
             response.json(classArray);
         });
     })
 
     .post(parseUrlencoded, function (request, response) {
-        const classObject = new classModel({
+        const lectureObject = new lectureModel({
             name: request.body.name,
             subject: request.body.subject,
             lection: request.body.lection,
             date: request.body.date,
             classroom: request.body.classroom
         });
-        classObject.save((err) => {
+        lectureObject.save((err) => {
             if(err) {
                 console.log(err);
             } else {
@@ -33,38 +33,38 @@ classRouter.route('/')
         });
     });
 
-classRouter.route('/:classId')
+lectureRouter.route('/:lectureId')
     
     .get(function(request, response) {
-        const classId = request.params.classId;
-        classModel.findById(classId, function(err, classObj) {
-            if(classObj === undefined) {
-                response.status(404).send("Class not found");
+        const lectureId = request.params.lectureId;
+        lectureModel.findById(lectureId, function(err, lectureObj) {
+            if(lectureObj === undefined) {
+                response.status(404).send("Lecture not found");
             } else {
-                response.json(classObj);
+                response.json(lectureObj);
             }
         });
     })
     
     .put(parseUrlencoded, function(request, response) {
-        const classId = request.params.classId;
-        classModel.findByIdAndUpdate(classId,
+        const lectureId = request.params.lectureId;
+        lectureModel.findByIdAndUpdate(lectureId,
             request.body,
             {new: true},
-            (err, classObj) => {
+            (err, lectureObj) => {
                 if (err) response.status(500).send(err);
-                return response.send(classObj);
+                return response.send(lectureObj);
             }
 
         );
     })
     
     .delete(function(request, response) {
-        const classId = request.params.classId;
-        classModel.findByIdAndRemove(classId, function(err, classObj) {
+        const lectureId = request.params.lectureId;
+        lectureModel.findByIdAndRemove(lectureId, function(err, lectureObj) {
             if(err) response.status(500).send(err);
-            return response.send(classObj);
+            return response.send(lectureObj);
         });
     });
  
-module.exports = classRouter;
+module.exports = lectureRouter;

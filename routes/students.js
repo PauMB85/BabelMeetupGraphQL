@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import studentModel from '../models/student';
-import classModel from '../models/class';
+import classModel from '../models/lecture';
 
 const studentRouter = express.Router();
 
@@ -43,7 +43,7 @@ studentRouter.route('/:studentId')
         const studentId = request.params.studentId;
         studentModel.findById(studentId, function(err, studentObj) {
             if(studentObj === undefined) {
-                response.status(404).send("Class not found");
+                response.status(404).send("Student not found");
             } else {
                 response.json(studentObj);
             }
