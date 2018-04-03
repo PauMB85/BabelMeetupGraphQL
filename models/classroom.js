@@ -7,7 +7,7 @@ const ClassroomSchema = mongoose.Schema({
     building: String,
     floor: String,
     capacity: Number,
-    lectures: [{type: mongoose.Schema.Types.ObjectId, ref: 'Lecture'}]
+    lectures: [{type: mongoose.Schema.Types.id, ref: 'Lecture'}]
 });
 
 module.exports = mongoose.model('Classroom', ClassroomSchema);

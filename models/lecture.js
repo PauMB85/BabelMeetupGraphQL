@@ -7,8 +7,8 @@ const ClassSchema = mongoose.Schema({
     subject: String,
     lection: String,
     date: Date,
-    teacher: {type: mongoose.Schema.Types.ObjectId, ref: 'Teacher'},
-    classroom: {type: mongoose.Schema.Types.ObjectId, ref: 'Classroom'}
+    teacher: {type: mongoose.Schema.Types.id, ref: 'Teacher'},
+    classroom: {type: mongoose.Schema.Types.id, ref: 'Classroom'}
 });
 
 module.exports = mongoose.model('Lecture', ClassSchema);
