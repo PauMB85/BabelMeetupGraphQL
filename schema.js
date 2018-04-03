@@ -38,6 +38,12 @@ const typeDefs = `type Student{
     type Query{
         students: [Student]
         student(id: String): Student
+        classes: [Class]
+        class(id: String): Class
+        teachers: [Teacher]
+        teacher(id: String): Teacher
+        classrooms: [Classroom]
+        classroom(id: String): Classroom
     }
     
 `;
