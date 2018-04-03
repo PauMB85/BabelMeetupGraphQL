@@ -3,7 +3,7 @@ import config from './config';
 import logger from './logger';
 import students from './routes/students';
 import teachers from './routes/teachers';
-import classes from './routes/classes';
+import lectures from './routes/lectures';
 import classrooms from './routes/classrooms';
 
 const server = express();
@@ -16,7 +16,7 @@ server.use(logger);
 
 server.use('/students', students);
 server.use('/teachers', teachers);
-server.use('/classes', classes);
+server.use('/lectures', lectures);
 server.use('/classrooms', classrooms);
 
 
