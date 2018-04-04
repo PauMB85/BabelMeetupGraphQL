@@ -3,15 +3,16 @@ import GraphQLDate from 'graphql-date';
 import resolvers from './resolvers.js';
 
 const typeDefs = `type Student{
+    id: String!
     name: String
     idCard: String
     birthdate: Date
-    classes: [Class]
+    lectures: [Lecture]
 }
     scalar Date
 
-    type Class{
-        id: Int
+    type Lecture{
+        id: String!
         name: String
         subject: String
         lection: String
@@ -21,14 +22,14 @@ const typeDefs = `type Student{
     }
     
     type Teacher{
-        id: Int!
+        id: String!
         name: String
         birthdate: Date
         salary: Int
     }
 
     type Classroom{
-        id: Int!
+        id: String!
         name: String
         building: String
         floor: String,
@@ -38,12 +39,17 @@ const typeDefs = `type Student{
     type Query{
         students: [Student]
         student(id: String): Student
-        classes: [Class]
-        class(id: String): Class
+        lectures: [Lecture]
+        lecture(id: String): Lecture
         teachers: [Teacher]
         teacher(id: String): Teacher
         classrooms: [Classroom]
         classroom(id: String): Classroom
+    }
+    type Mutation{
+        addStudent(name: String!, idCard: String!, birthdate: Date!, lectures: [Lecture]!): Student
+        deleteStudent(id: String!): Student
+        updateStudent(id: String!, name: String!, idCard: String!, birthdate: Date!, lectures: [Lecture]): Student
     }
     
 `;
