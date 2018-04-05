@@ -3,7 +3,7 @@ import GraphQLDate from 'graphql-date';
 import resolvers from './resolvers.js';
 
 const typeDefs = `type Student{
-    id: String!
+    id: ID!
     name: String
     idCard: String
     birthdate: Date
@@ -12,7 +12,7 @@ const typeDefs = `type Student{
     scalar Date
 
     type Lecture{
-        id: String!
+        id: ID!
         name: String
         subject: String
         lection: String
@@ -22,14 +22,14 @@ const typeDefs = `type Student{
     }
     
     type Teacher{
-        id: String!
+        id: ID!
         name: String
         birthdate: Date
         salary: Int
     }
 
     type Classroom{
-        id: String!
+        id: ID!
         name: String
         building: String
         floor: String,
@@ -38,18 +38,20 @@ const typeDefs = `type Student{
     
     type Query{
         students: [Student]
-        student(id: String): Student
+        student(id: ID): Student
         lectures: [Lecture]
-        lecture(id: String): Lecture
+        lecture(id: ID): Lecture
         teachers: [Teacher]
-        teacher(id: String): Teacher
+        teacher(id: ID): Teacher
         classrooms: [Classroom]
-        classroom(id: String): Classroom
+        classroom(id: ID): Classroom
     }
     type Mutation{
-        addStudent(name: String!, idCard: String!, birthdate: Date!, lectures: [Lecture]!): Student
-        deleteStudent(id: String!): Student
-        updateStudent(id: String!, name: String!, idCard: String!, birthdate: Date!, lectures: [Lecture]): Student
+        addTeacher(name: String!, birthdate: Date, salary: Float): Teacher
+        deleteTeacher(id: ID!): Boolean
+        addClassroom(name: String!, building: String!, floor: String!, capacity: Int!): Classroom
+        deleteClassroom(id: ID!): Boolean
+        addLecture(name: String!, subject: String!, lection: String!, date: Date!, teacher: ID!, classroom: ID!): Lecture
     }
     
 `;
