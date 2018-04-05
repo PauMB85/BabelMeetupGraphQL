@@ -49,6 +49,51 @@ const resolvers = {
         classroom: (root, {id}) => {
             return classroomModel.findOne({id: id});
         }
+    },
+
+    Mutation: {
+        addTeacher: (root, {name, birthdate, salary}) => {
+            const teacher = new teacherModel({
+                name: name,
+                birthdate: birthdate,
+                salary: salary
+            })
+
+            return teacher.save();
+        },
+
+        deleteTeacher: (root, {id}) => {
+            return teacherModel.find({id: id}).remove().exec();
+        },
+
+        addClassroom: (root, {name, building, floor, capacity}) => {
+            const classroom = new classroomModel({
+                name: name,
+                building: building,
+                floor: floor,
+                capacity: capacity
+            });
+            return classroom.save();
+        },
+
+        deleteClassroom: (root, {id}) => {
+            return classroomModel.find({id: id}).remove().exec();
+        },
+
+        addLecture: (root, {name, subject, lection, date, teacher, classroom}) => {
+            const lecture = new lectureModel({
+                name: name,
+                subject: subject,
+                lection: lection,
+                date: date,
+                teacher: teacher,
+                classroom: classroom
+            });
+
+            return lecture.save();
+        }
+
+
     }
 }
 
